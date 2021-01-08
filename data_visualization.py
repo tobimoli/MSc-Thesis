@@ -5,6 +5,7 @@ Created on Wed Dec 16 10:22:27 2020
 @author: molenaar
 """
 import numpy as np
+#import cv2
 from netCDF4 import Dataset
 import numpy.ma as ma
 import matplotlib
@@ -48,7 +49,7 @@ class Data:
             try:
                 self.var_units[key] = dataset.variables[key].units
             except:
-                self.var_units[key] = 'nm'
+                self.var_units[key] = '-'
         print('The data is imported')
     def hist(self, var):
         self.var = var
@@ -111,26 +112,24 @@ class Data:
         for key in self.keys:
             mask += ma.getmask(self.var_values[key].flatten())
         self.mask = np.array(mask != 0)
-        
+    def RGB(self):
+        x,y = self.var_values['lon'][self.sub[0]:self.sub[1],self.sub[2]:self.sub[3]].shape
+        retrack_original = np.zeros((x,y,3),dtype=int)
+        MAX = [np.max(self.var_values['band_1']), np.max(self.var_values['band_2']), np.max(self.var_values['band_3'])]
+        for i in range(self.sub[1] - self.sub[0]):
+            for j in range(self.sub[3] - self.sub[2]):
+                retrack_original[i][j][0] = self.var_values['band_1'].data[i+self.sub[0],j+self.sub[2]]/MAX[0]*255
+                retrack_original[i][j][1] = self.var_values['band_2'].data[i+self.sub[0],j+self.sub[2]]/MAX[1]*255
+                retrack_original[i][j][2] = self.var_values['band_3'].data[i+self.sub[0],j+self.sub[2]]/MAX[2]*255
+        plt.imshow(retrack_original)
+
 b = Data([200,330,2450,2600])
+#b = Data([200,600,2400,2800])
 b.import_data()
 b.masktotal()
 b.dataframe()
 
-#d.hist()
-#d.boxplot()
+#b.hist()
+#b.boxplot()
 #b.plot('band_1')
-#b.plot('band_2')
-#b.plot('band_3')
-#b.plot('band_4')
 
-import cv2
-x,y = b.var_values['band_1'].shape
-retrack_original = np.zeros((x,y,3),dtype=int)
-for i in range(x):
-    for j in range(y):
-        retrack_original[i][j][0] = b.var_values['band_1'].data[i,j]
-        retrack_original[i][j][1] = b.var_values['band_2'].data[i,j]
-        retrack_original[i][j][2] = b.var_values['band_3'].data[i,j]
-cv2.imwrite('ori.jpg',retrack_original) 
-plt.imshow(retrack_original)
