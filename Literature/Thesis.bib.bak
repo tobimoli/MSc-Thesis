@@ -95,4 +95,95 @@
   publisher = {Multidisciplinary Digital Publishing Institute},
 }
 
+@InProceedings{lee1998,
+  author       = {Lee, ZP and Zhang, MR and Carder, KL and Hall, LO},
+  booktitle    = {Proceedings, Ocean Optics XIV},
+  title        = {A neural network approach to deriving optical properties and depths of shallow waters},
+  year         = {1998},
+  organization = {Office of Naval Research, Washington, DC},
+}
+
+@Article{cannizzaro2006,
+  author    = {Cannizzaro, Jennifer Patch and Carder, Kendall L},
+  journal   = {Remote Sensing of Environment},
+  title     = {Estimating chlorophyll a concentrations from remote-sensing reflectance in optically shallow waters},
+  year      = {2006},
+  number    = {1},
+  pages     = {13--24},
+  volume    = {101},
+  publisher = {Elsevier},
+}
+
+@Article{wang2018,
+  author    = {Wang, Xing and Gong, Zhaoning and Pu, Ruiliang},
+  journal   = {Environmental monitoring and assessment},
+  title     = {Estimation of chlorophyll a content in inland turbidity waters using WorldView-2 imagery: a case study of the Guanting Reservoir, Beijing, China},
+  year      = {2018},
+  number    = {10},
+  pages     = {620},
+  volume    = {190},
+  publisher = {Springer},
+}
+
+@Article{dallolmo2005,
+  author    = {Dall’Olmo, Giorgio and Gitelson, Anatoly A},
+  journal   = {Applied optics},
+  title     = {Effect of bio-optical parameter variability on the remote estimation of chlorophyll-a concentration in turbid productive waters: experimental results},
+  year      = {2005},
+  number    = {3},
+  pages     = {412--422},
+  volume    = {44},
+  publisher = {Optical Society of America},
+}
+
+@Article{tzortziou2007,
+  author    = {Tzortziou, Maria and Subramaniam, Ajit and Herman, Jay R and Gallegos, Charles L and Neale, Patrick J and Harding Jr, Lawrence W},
+  journal   = {Estuarine, Coastal and Shelf Science},
+  title     = {Remote sensing reflectance and inherent optical properties in the mid Chesapeake Bay},
+  year      = {2007},
+  number    = {1-2},
+  pages     = {16--32},
+  volume    = {72},
+  publisher = {Elsevier},
+}
+
+@Article{moses2009,
+  author    = {Moses, Wesley J and Gitelson, Anatoly A and Berdnikov, Sergey and Povazhnyy, Vasiliy},
+  journal   = {IEEE Geoscience and Remote Sensing Letters},
+  title     = {Satellite estimation of chlorophyll-$ a $ concentration using the red and NIR bands of MERIS—The Azov sea case study},
+  year      = {2009},
+  number    = {4},
+  pages     = {845--849},
+  volume    = {6},
+  publisher = {IEEE},
+}
+
+@Article{oreilly,
+  author    = {O'Reilly, John E and Maritorena, Stephane and Mitchell, B Greg and Siegel, David A and Carder, Kendall L and Garver, Sara A and Kahru, Mati and McClain, Charles},
+  journal   = {Journal of Geophysical Research: Oceans},
+  title     = {Ocean color chlorophyll algorithms for SeaWiFS},
+  year      = {1998},
+  number    = {C11},
+  pages     = {24937--24953},
+  volume    = {103},
+  publisher = {Wiley Online Library},
+}
+
+@Article{oreilly2000,
+  author    = {Hooker, Stanford B and Firestone, Elaine R and OReilly, John E and Maritorena, Stephane and OBrien, Margaret C and Siegel, David A and Toole, Dierdre and Mueller, James L and Mitchell, B Greg and Kahru, Mati and others},
+  title     = {SeaWiFS Postlaunch Technical Report Series. Volume 11; SeaWIFS Postlaunch Calibration and Validation Analyses},
+  year      = {2000},
+  publisher = {Citeseer},
+}
+
+@Article{oreilly2019,
+  author    = {O'Reilly, John E and Werdell, P Jeremy},
+  journal   = {Remote sensing of environment},
+  title     = {Chlorophyll algorithms for ocean color sensors-OC4, OC5 \& OC6},
+  year      = {2019},
+  pages     = {32--47},
+  volume    = {229},
+  publisher = {Elsevier},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
