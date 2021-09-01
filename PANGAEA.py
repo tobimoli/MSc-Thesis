@@ -14,7 +14,7 @@ from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 import cartopy.feature as cfeature
 import matplotlib.colors
 
-FOLDER = 'C:/Users/molenaar/OneDrive - Stichting Deltares/Documents/Thesis - Deltares/Data/'
+FOLDER = 'C:/Users/molenaar/OneDrive - Stichting Deltares/Documents/Thesis - Deltares/Data/PANGAEA/'
 NAME = 'PANGAEA.txt'
 CITY = 'worldcities.csv'
 
@@ -27,34 +27,35 @@ def findindex(lon,lat):
 
 countries = []
 cities = []
-for i in range(len(data)):
-    if i%1000 == 0:
-        print(i)
-    lat = data['Latitude'][i]
-    lon = data['Longitude'][i]
-    countries.append(city['country'][findindex(lon,lat)])
-    cities.append(city['city'][findindex(lon,lat)])
+#for i in range(len(data)):
+#    if i%1000 == 0:
+#        print(i)
+#    lat = data['Latitude'][i]
+#    lon = data['Longitude'][i]
+#    countries.append(city['country'][findindex(lon,lat)])
+#    cities.append(city['city'][findindex(lon,lat)])
     
-data['country'] = countries
-data['city'] = cities
+#data['country'] = countries
+#data['city'] = cities
 data['year'] = [int(n[:4]) for n in data['Date/Time']]
 
-matplotlib.rcParams['figure.figsize'] = (20,10)
+#data = data[(data['Longitude']<30) & (data['Longitude']>20) & (data['Latitude']<41) & (data['Latitude']>31)]
+matplotlib.rcParams['figure.figsize'] = (10,10)
 # Initialize map
 proj=ccrs.Mercator()
 m = plt.axes(projection=proj)
 plt.rcParams.update({'font.size': 18})
 # Plot data
 cmap = plt.cm.rainbow
-norm = matplotlib.colors.Normalize(vmin=1988, vmax=2012) 
-plt.scatter(data['Longitude'], data['Latitude'], c = cmap(norm(data['year'].values)), s=3, transform = ccrs.PlateCarree())
+norm = matplotlib.colors.Normalize() 
+plt.scatter(data['Longitude'], data['Latitude'], c = cmap(norm(data['year'].values)), s=8, transform = ccrs.PlateCarree())
 
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 plt.colorbar(sm)
 
-m.coastlines(resolution="110m")
+m.coastlines(resolution="10m")
 m.add_feature(cfeature.OCEAN)
-land_10m = cfeature.NaturalEarthFeature('physical', 'land', '110m', facecolor=cfeature.COLORS['land'], zorder=0)
+land_10m = cfeature.NaturalEarthFeature('physical', 'land', '10m', facecolor=cfeature.COLORS['land'], zorder=0)
 m.add_feature(land_10m)
 
 gl=m.gridlines(crs=ccrs.PlateCarree(), draw_labels=True, linewidth=1, color='gray', alpha=0.5, linestyle='--')
