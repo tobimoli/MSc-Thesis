@@ -1,3 +1,6 @@
-# Thesis Deltares
-This will be the ReadMe file containing important information about the project and how to use the scripts.
+# Deriving water quality indicators from high-resolution satellite data using spatio-temporal statistics
+# Abstract (MSc Thesis TU Delft)
+The derivation of water quality indicators is of importance, especially in coastal areas, as most of the economic activities are located here. However, the availability of high-spatial-resolution water quality information in coastal zones is limited. Nowadays, high-resolution satellite data is becoming available and can fill in this knowledge gap. This satellite data contains spectral reflectances, so a model needs to be designed to map these reflectances to water quality indicators. In this thesis, a Gaussian process regression (GPR) method will be introduced and analyzed extensively in terms of covariance functions, hyperparameters and computational costs. Remote sensing data is collected from the Sentinel-2 mission and the in-situ data is obtained from the ODYSSEA programme. The Matérn 3/2 kernel produces the best results and these are compared with the current models that rely on machine learning techniques. GPR shows promising results in terms of estimation accuracy and chlorophyll-a maps are made for different areas and depths. Various approximation methods are tested to speed up the computation time. Singular value decomposition shows promising results for doing predictions to reduce the computation time. Moreover, GPR can handle limited availability of in-situ data well and uncertainty quantification is induced by the Bayesian framework.
+
+# Information about the scripts.
 
