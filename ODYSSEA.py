@@ -6,7 +6,6 @@ Created on Wed Jan 27 15:32:04 2021
 """
 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 import cartopy.crs as ccrs
@@ -24,7 +23,7 @@ data['year'] = [int(n[6:10]) for n in data['time']]
 data['date'] = [n[6:10]+n[2:5] + '-' + n[:2] for n in data['time']]
 data['date'] = data['date'].astype("datetime64")
 
-#--------------------------------------------
+#%%
 matplotlib.rcParams['figure.figsize'] = (12,12)
 # Initialize map
 proj=ccrs.Mercator()
@@ -51,7 +50,7 @@ gl.top_labels = False
 gl.right_labels = False
 
 plt.show()
-#--------------------------------------------
+#%%
 plt.figure()
 plt.scatter(data['lon'], data['chl'])
 plt.show()
@@ -61,7 +60,7 @@ plt.show()
 plt.figure()
 plt.scatter(data['dep'], data['chl'])
 plt.show()
-#--------------------------------------------
+#%%
 
 rows_to_drop = []
 for i in range(len(data)):

@@ -5,13 +5,6 @@ Created on Mon Jan 11 09:21:50 2021
 @author: molenaar
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  4 16:36:33 2021
-
-@author: molenaar
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -26,11 +19,8 @@ NAME = 'EMODNet.csv'
 #NAME = 'ODYSSEA.csv'
 CITY = 'worldcities.csv'
 
-if NAME == 'ODYSSEA.csv':
-    data = pd.read_table(FOLDER+NAME, sep = ';')
-else:
-    data = pd.read_table(FOLDER+NAME, sep = ';')
-#city = pd.read_table(FOLDER+CITY, sep = ',')
+data = pd.read_table(FOLDER+NAME, sep = ';')
+city = pd.read_table(FOLDER+CITY, sep = ',')
 
 #data = data[data['Water body chlorophyll-a [mg/m^3]'].notnull()]
 #data = data[data['time_ISO8601'].notnull()]
@@ -57,7 +47,7 @@ def findindex(lon,lat):
 #    lon = data['Longitude [degrees_east]'][i]
 #    countries.append(city['country'][findindex(lon,lat)])
 #    cities.append(city['city'][findindex(lon,lat)])
-    
+
 
 #data = data[(data['Longitude [degrees_east]']<29) & (data['Longitude [degrees_east]']>5) & (data['Latitude [degrees_north]']<45) & (data['Latitude [degrees_north]']>36)]
 #data = data[(data['Longitude [degrees_east]']<20) & (data['Longitude [degrees_east]']>15) & (data['Latitude [degrees_north]']<43) & (data['Latitude [degrees_north]']>40)]

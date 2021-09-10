@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-#--------------------------------------------
+#%%
 FOLDER = 'P:/11202428-hisea-inter/Tobias_Molenaar/01-Data/In-Situ/'
 NAME = 'ODYSSEA.csv'
 data = pd.read_table(FOLDER+NAME, usecols = [2,4,5,6,8], sep = ';')
@@ -45,6 +45,7 @@ plt.xlabel('chlorophyll [mg]')
 plt.ylabel('#observations')
 plt.show()
 
+#%%
 from sklearn.linear_model import LinearRegression
 
 X = np.array([data['dep']]).T
@@ -76,7 +77,7 @@ plt.legend()
 plt.ylabel('chl concentration [mg]')
 plt.show()
 
-
+#%%
 import statsmodels.api as sm
 lowess = sm.nonparametric.lowess
 x = data['dep']

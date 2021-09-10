@@ -8,35 +8,15 @@ Created on Thu Apr 29 10:17:42 2021
 import GPy
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 
-def plot_errcont(xval, Y_train, Prediction, xfit, xlabel, title = ''):
-    plt.figure(figsize = (7, 7))
-    plt.rcParams.update({'font.size': 18})
-    plt.plot(xval, Y_train, 'r.', markersize = 12, label = 'Data')
-    yfit = Prediction[0].flatten()
-    dyfit = 2 * np.sqrt(Prediction[1].flatten())
-    
-    plt.plot(xfit, yfit, '-', color='gray', label = 'Posterior Mean')
-    plt.fill_between(xfit, yfit - dyfit, yfit + dyfit, color='gray', alpha=0.2, label = "2 std range")
-    
-    plt.grid(True)
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylim([-2, 2])
-    plt.ylabel('Output variable')
-    plt.legend()
-    plt.show()
+from Function_file import plot_errcont, plotmatrix
+
 def generate_noisy_points(n=10, noise_variance=1e-6):
     np.random.seed(4372859)
     X = np.random.uniform(-3., 3., (n, 1))
     y = np.sin(3*X) + np.random.randn(n, 1) * noise_variance**0.5
     return X, y
-def plotmatrix(matrix, title):
-    fig, ax = plt.subplots(figsize=(10, 8))
-    sns.heatmap(data=matrix, cmap='Blues', ax=ax)
-    ax.set(title=title)
-    ax.invert_yaxis()
+
 #%% plot Matérn
 
 sigma_f = 1

@@ -2,9 +2,11 @@ import numpy as np
 import GPy
 import time
 import matplotlib.pyplot as plt
-from numpy.linalg import inv, cholesky, eig
+from numpy.linalg import inv, cholesky, norm
+from scipy.sparse.linalg import eigsh
+from scipy.linalg import eigh, solve
 
-#%%
+#%% set initial values
 np.random.seed(101)
 
 N = 1001
@@ -12,7 +14,7 @@ M_range = list(range(10,100,10))
 
 bericht = True
 
-#%%
+#%% create data
 results = np.zeros((3,len(M_range)+1))
 noise_var = 0.1
 X = np.linspace(0,100,N)[:,None]
@@ -22,7 +24,7 @@ X_star = np.linspace(-20,120,2001)[:,None]
 kern = GPy.kern.RBF(1, lengthscale = 10)
 y = np.random.multivariate_normal(np.zeros(N),kern.K(X)+np.eye(N)*noise_var).reshape(-1,1)
 
-#%%
+#%% plot prediction with GPR (GPy)
 s_full = time.time()
 
 kern = GPy.kern.RBF(1, variance = 1,  lengthscale = 1)
@@ -37,7 +39,7 @@ m_full.plot()
 plt.title("n=1001")
 
 results[:,-1] = N, m_full.log_likelihood(), e_full-s_full
-#%%
+#%% Plot prediction with Sparse GPR (GPy)
 i = 0
 for M in M_range:
     print(M)
@@ -158,7 +160,7 @@ for n in N_range:
     R[i,:] = n, np.sum(abs(E))/1000**2, end-start, e-s
     i += 1
     
-#%%
+#%% plot
 x = list(range(len(N_range)))
 fig,ax = plt.subplots()
 ax.plot(x, R[:,1], color="red", marker="o")
@@ -173,9 +175,6 @@ plt.xticks(x, R[:,0].astype(int))
 plt.show()
 
 #%% SVD
-from scipy.sparse.linalg import eigsh
-from numpy.linalg import norm
-from scipy.linalg import eigh
 
 kern = GPy.kern.RBF(1, lengthscale = 10)
 n = 1000
@@ -345,7 +344,7 @@ for k in klst:
     s = time.time()
     for j in range(J):
         ss = time.time()
-        [S, U] = eigsh(K, k = k, which = 'SM', tol = 10**-5)
+        [S, U] = eigsh(K, k = k, tol = 10**-5)
         inverse = np.dot(U * 1/S, U.T)
         ee = time.time()
         TIMES[i,j] = ee - ss
@@ -361,7 +360,6 @@ for c1, c2, c3, c4, c5 in results:
     print("%.5f | %5.0f | %10.0f | %8.1f | %6.2e " % (c1, c2, c3, c4, c5))
 
 #%% Cholesky inverse
-from scipy.linalg import solve
 
 L = solve(K + 1*np.eye(K.shape[0]), )
 Kinv = np.dot(L,L.T)

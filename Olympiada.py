@@ -6,7 +6,6 @@ Created on Thu Feb 11 17:41:51 2021
 """
 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 import cartopy.crs as ccrs
@@ -26,7 +25,7 @@ data['date'] = [n[:10] for n in data['time']]
 data['date'] = data['date'].astype("datetime64")
 data['julian'] = list(range(len(data)))
 
-#--------------------------------------------
+#%%
 matplotlib.rcParams['figure.figsize'] = (12,12)
 # Initialize map
 proj=ccrs.Mercator()
@@ -53,14 +52,14 @@ gl.top_labels = False
 gl.right_labels = False
 
 plt.show()
-#--------------------------------------------
+#%%
 plt.figure()
 plt.scatter(data['oxy'], data['chl'], marker = '.', alpha = 0.1)
 plt.show()
 plt.figure()
-plt.scatter(data['lat'], data['chl'])
+plt.scatter(data['day'], data['chl'])
 plt.show()
-#--------------------------------------------
+#%%
 
 plt.figure(figsize = (12,6))
 plt.plot(data['date'], data['chl'])
